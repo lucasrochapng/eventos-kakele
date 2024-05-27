@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { id: 'time2', hour: 3, minute: 14 },
         { id: 'time3', hour: 3, minute: 15 },
         { id: 'time4', hour: 4, minute: 3 },
-        { id: 'time5', hour: 8, minute: 40 }
+        { id: 'time5', hour: 4, minute: 18 }
     ];
 
     function loadEvents() {
