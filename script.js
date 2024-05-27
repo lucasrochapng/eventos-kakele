@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     const events = [
         { id: 'time1', hour: 16, minute: 0 },
-        { id: 'time2', hour: 23, minute: 5 }
+        { id: 'time2', hour: 23, minute: 13 }
     ];
 
     function updateTime(event) {
@@ -21,11 +21,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function checkEvents() {
         const now = new Date();
-        events.forEach(event => {
-            let eventTime = new Date();
-            eventTime.setHours(event.hour, event.minute, 0, 0);
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
 
-            if (now >= eventTime) {
+        events.forEach(event => {
+            if (currentHour === event.hour && currentMinute === event.minute) {
                 updateTime(event);
                 document.getElementById(event.id).textContent = formatTime(event.hour, event.minute);
             }
