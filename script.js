@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { id: 'time2', hour: 3, minute: 14 },
         { id: 'time3', hour: 3, minute: 15 },
         { id: 'time4', hour: 4, minute: 3 },
-        { id: 'time5', hour: 8, minute: 18 }
+        { id: 'time5', hour: 8, minute: 40 }
     ];
 
     function loadEvents() {
@@ -52,9 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-
-    // Clear localStorage for debugging (remove this in production)
-    localStorage.clear();
 
     // Load events from localStorage on initial load
     loadEvents();
