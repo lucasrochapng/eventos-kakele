@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
     const events = [
-        { id: 'time1', hour: 16, minute: 0 },
-        { id: 'time2', hour: 23, minute: 20 }
+        { id: 'time1', hour: 6, minute: 47 },
+        { id: 'time2', hour: 7, minute: 25 },
+        { id: 'time3', hour: 7, minute: 26 },
+        { id: 'time4', hour: 8, minute: 3 },
+        { id: 'time5', hour: 8, minute: 18}
     ];
 
     function updateTime(event) {
