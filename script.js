@@ -1,48 +1,38 @@
-// app.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('sw.js').then(registration => {
-            console.log('Service Worker registrado com sucesso:', registration);
-        }).catch(error => {
-            console.log('Falha ao registrar o Service Worker:', error);
+    const timerContainers = document.querySelectorAll('.timer-container');
+    const alarmAudio = document.getElementById('alarmAudio');
+
+    timerContainers.forEach(container => {
+        const timerElement = container.querySelector('.timer');
+        const startButton = container.querySelector('.start-timer');
+        let initialTime = timerElement.textContent;
+        let countdown;
+
+        startButton.addEventListener('click', () => {
+            clearInterval(countdown);
+            startTimer(timerElement, initialTime);
         });
-    }
 
-    document.getElementById('startTimer').addEventListener('click', function() {
-        const timeInput = document.getElementById('timeInput').value;
-        let timeLeft = parseInt(timeInput, 10);
-        const timerDisplay = document.getElementById('timerDisplay');
+        function startTimer(timerElement, initialTime) {
+            let [hours, minutes, seconds] = initialTime.split(':').map(Number);
+            let totalSeconds = hours * 3600 + minutes * 60 + seconds;
 
-        if (isNaN(timeLeft) || timeLeft <= 0) {
-            alert('Por favor, insira um número válido.');
-            return;
-        }
-
-        const timerInterval = setInterval(function() {
-            if (timeLeft <= 0) {
-                clearInterval(timerInterval);
-                showNotification();
-            } else {
-                timerDisplay.textContent = `Tempo restante: ${timeLeft} segundos`;
-                timeLeft--;
-            }
-        }, 1000);
-    });
-
-    function showNotification() {
-        if (Notification.permission === 'granted') {
-            navigator.serviceWorker.ready.then(function(registration) {
-                registration.showNotification('O tempo acabou!');
-            });
-        } else if (Notification.permission !== 'denied') {
-            Notification.requestPermission().then(permission => {
-                if (permission === 'granted') {
-                    navigator.serviceWorker.ready.then(function(registration) {
-                        registration.showNotification('O tempo acabou kakeliano!');
-                    });
+            countdown = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(countdown);
+                    timerElement.textContent = initialTime;
+                    alarmAudio.play();
+                    return;
                 }
-            });
+
+                totalSeconds--;
+
+                let h = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+                let m = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+                let s = String(totalSeconds % 60).padStart(2, '0');
+
+                timerElement.textContent = `${h}:${m}:${s}`;
+            }, 1000);
         }
-    }
+    });
 });
