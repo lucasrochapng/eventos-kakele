@@ -18,8 +18,8 @@ body {
     align-items: center;
     justify-content: center;
     margin-top: 20px;
-    margin-left: 200px;
-    margin-right: 200px;
+    /* margin-left: 200px;
+    margin-right: 200px; */
 }
 
 .timer-container {
@@ -54,4 +54,12 @@ body {
 
 .start-timer:hover {
     background-color: rgb(221, 23, 23);
+}
+
+
+@media (min-width: 800px) {
+    body {
+        margin-left: 200px;
+        margin-right: 200px;
+    }
 }
