@@ -3,25 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventos Kakele</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="zenin.png" sizes="190x190">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .event {
-            margin: 10px 0;
-        }
-    </style>
+    <title>Timer Notification</title>
 </head>
 <body>
-    <h1>Próximos Eventos</h1>
-    <div class="event" id="event1"><p>Bata na Porta do Céu: </p><span id="time1">14:47</span></div>
-    <div class="event" id="event2"><p>Apagando Fogo: </p><span id="time2">15:14</span></div>
-    <div class="event" id="event3"><p>O Ataque dos Piratas: </p><span id="time3">15:15</span></div>
-    <div class="event" id="event4"><p>A Maldição da Tempestade de Areia: </p><span id="time4">16:03</span></div>
-    <div class="event" id="event5"><p>Os Vermes Hidras: </p><span id="time5">16:18</span></div>
+    <h1>Timer Notification</h1>
+    <p>Digite o tempo em segundos:</p>
+    <input type="number" id="timeInput" min="1">
+    <button id="startTimer">Start Timer</button>
+    <p id="timerDisplay"></p>
 
     <script src="script.js"></script>
 </body>
